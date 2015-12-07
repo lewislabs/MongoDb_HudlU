@@ -1,0 +1,4 @@
+2a) db.books.find({isbn:3});
+ b) db.books.find({title:{$in:["Nineteen Eighty-Four", "Not That It Matters"]}}, {title:1, "authors.full_name":1});
+ c) db.books.find({"authors.full_name":{$ne:"George Orwell"}});
+ d) db.books.find({publisher:"PublisherA"});

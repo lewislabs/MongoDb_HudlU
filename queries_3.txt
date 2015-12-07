@@ -1,0 +1,111 @@
+3a)db.books.aggregate([{
+                        $group:{
+                            _id: { year: {$year : "$releaseDate"}},
+                            totalBooks: { $sum : 1 }
+                        }
+                     }]);
+-----------------------------OUTPUT----------------------------------------------------
+{
+    "result" : [ 
+        {
+            "_id" : {
+                "year" : 1949
+            },
+            "totalBooks" : 2.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 2001
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1844
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1920
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1979
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1926
+            },
+            "totalBooks" : 1.0000000000000000
+        }
+    ],
+    "ok" : 1.0000000000000000
+}
+
+b) db.books.aggregate([{
+                        $group:{
+                            _id: { year: {$year : "$releaseDate"}, publisher: "$publisher"},
+                            totalBooks: { $sum : 1 }
+                        }
+                     }]);
+----------------------------OUTPUT---------------------------------------------------------------------
+{
+    "result" : [ 
+        {
+            "_id" : {
+                "year" : 1949,
+                "publisher" : "PublisherD"
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1949,
+                "publisher" : "PublisherA"
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 2001,
+                "publisher" : "PublisherB"
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1844,
+                "publisher" : "PublisherF"
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1979,
+                "publisher" : "PublisherC"
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1920,
+                "publisher" : "PublisherA"
+            },
+            "totalBooks" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1926,
+                "publisher" : "PublisherA"
+            },
+            "totalBooks" : 1.0000000000000000
+        }
+    ],
+    "ok" : 1.0000000000000000
+}
+

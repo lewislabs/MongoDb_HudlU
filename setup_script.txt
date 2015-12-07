@@ -1,0 +1,14 @@
+db.createCollection('books');
+db.books.createIndex({isbn:1});
+db.books.createIndex({title:1});
+db.books.createIndex({"authors.full_name":1});
+db.books.createIndex({publisher:1});
+
+db.books.insert({title:"Winnie the Pooh", authors:[{full_name:"A. A. Milne",age:100,birthCountry:"UK"}, {full_name:"Ernest Shepard", age:100, birthCountry:"UK"}], isbn:1,releaseDate:new ISODate('1926-01-01T00:00:00Z'),publishCountry:"UK",publisher:"PublisherA",desc:"About a bear"});
+db.books.insert({title:"Not That It Matters", authors:[{full_name:"A. A. Milne",age:100,birthCountry:"UK"}], isbn:2,releaseDate:new ISODate('1920-01-01T00:00:00Z'),publishCountry:"UK",publisher:"PublisherA",desc:"Who cares"});
+db.books.insert({title:"The Three Musketeers", authors:[{full_name:"Alexandre Dumas",age:200,birthCountry:"France"}], isbn:3,releaseDate:new ISODate('1844-01-01T00:00:00Z'),publishCountry:"France",publisher:"PublisherF",desc:"3 guys in fancy trousers fighting baddies"});
+db.books.insert({title:"The Da Vinci Code", authors:[{full_name:"Dan Brown",age:50,birthCountry:"USA"}], isbn:4,releaseDate:new ISODate('2001-01-01T00:00:00Z'),publishCountry:"USA",publisher:"PublisherB",desc:"Codes in paintings"});
+db.books.insert({title:"Daredevil, A Grave Mistake", authors:[{full_name:"Frank Miller",age:58,birthCountry:"USA"}, {full_name:"Roger McKenzie", age:60, birthCountry:"USA"}], isbn:5,releaseDate:new ISODate('1979-01-01T00:00:00Z'),publishCountry:"USA",publisher:"PublisherC",desc:"A daring devil"});
+db.books.insert({title:"Nineteen Eighty-Four", authors:[{full_name:"George Orwell",age:115,birthCountry:"UK"}], isbn:6,releaseDate:new ISODate('1949-01-01T00:00:00Z'),publishCountry:"UK",publisher:"PublisherA",desc:"Big Brother but with less chavs"});
+db.books.insert({title:"To Kill A Mockingbird", authors:[{full_name:"Harper Lee",age:90,birthCountry:"USA"}], isbn:7,releaseDate:new ISODate('1949-01-01T00:00:00Z'),publishCountry:"USA",publisher:"PublisherD",desc:"Something about unit testing..."});
+

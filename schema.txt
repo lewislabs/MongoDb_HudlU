@@ -1,0 +1,10 @@
+Schema 
+----------------------------------------------------------------------------------------------------------------------
+
+For the queries and tasks in this project, I have used a single collection "books" where authors data is embedded into the collection. Since the limit on number of authors per book is likely to be very low (2 or 3) and when thinking about all the books in existence, the number of books for a given author is a very small percentage. These factors mean that the duplication of data from embedding is actually a very reasonable trade off for the speed of queries and our use case.
+
+Indexes
+----------------------------------------------------------------------------------------------------------------------
+
+I created an index per books field from 2) where 2c) is a multikey index into the authors array. See the setup_script.txt
+
