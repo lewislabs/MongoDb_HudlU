@@ -109,3 +109,63 @@ b) db.books.aggregate([{
     "ok" : 1.0000000000000000
 }
 
+3c) db.books.aggregate(
+    [       
+        {
+            $group: {
+                _id : { year : {$year : "$releaseDate"}},
+                averageAuthors : { $avg : { $size : "$authors"}}
+            }
+        }
+     ]);
+-------------------------------------------OUTPUT-----------------------------------------------------
+{
+    "result" : [ 
+        {
+            "_id" : {
+                "year" : 1949
+            },
+            "averageAuthors" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 2001
+            },
+            "averageAuthors" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1844
+            },
+            "averageAuthors" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1920
+            },
+            "averageAuthors" : 1.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1979
+            },
+            "averageAuthors" : 2.0000000000000000
+        }, 
+        {
+            "_id" : {
+                "year" : 1926
+            },
+            "averageAuthors" : 2.0000000000000000
+        }
+    ],
+    "ok" : 1.0000000000000000
+}
+
+
+
+
+
+
+
+
+
