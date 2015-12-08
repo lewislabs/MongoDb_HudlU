@@ -160,6 +160,145 @@ b) db.books.aggregate([{
     ],
     "ok" : 1.0000000000000000
 }
+3d) db.books.aggregate(
+    [       
+        { $unwind: "$authors" },
+        { $group : 
+            { _id : {author : "$authors"},
+              books : {$push : {title : "$title", isbn : "$isbn" }}
+            }
+        }
+     ]);
+------------------------------------------OUTPUT------------------------------------------------------------------------------
+{
+    "result" : [ 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "George Orwell",
+                    "age" : 115.0000000000000000,
+                    "birthCountry" : "UK"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "Nineteen Eighty-Four",
+                    "isbn" : 6.0000000000000000
+                }
+            ]
+        }, 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "Harper Lee",
+                    "age" : 90.0000000000000000,
+                    "birthCountry" : "USA"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "To Kill A Mockingbird",
+                    "isbn" : 7.0000000000000000
+                }
+            ]
+        }, 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "Roger McKenzie",
+                    "age" : 60.0000000000000000,
+                    "birthCountry" : "USA"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "Daredevil, A Grave Mistake",
+                    "isbn" : 5.0000000000000000
+                }
+            ]
+        }, 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "Dan Brown",
+                    "age" : 50.0000000000000000,
+                    "birthCountry" : "USA"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "The Da Vinci Code",
+                    "isbn" : 4.0000000000000000
+                }
+            ]
+        }, 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "Frank Miller",
+                    "age" : 58.0000000000000000,
+                    "birthCountry" : "USA"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "Daredevil, A Grave Mistake",
+                    "isbn" : 5.0000000000000000
+                }
+            ]
+        }, 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "Alexandre Dumas",
+                    "age" : 200.0000000000000000,
+                    "birthCountry" : "France"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "The Three Musketeers",
+                    "isbn" : 3.0000000000000000
+                }
+            ]
+        }, 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "Ernest Shepard",
+                    "age" : 100.0000000000000000,
+                    "birthCountry" : "UK"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "Winnie the Pooh",
+                    "isbn" : 1.0000000000000000
+                }
+            ]
+        }, 
+        {
+            "_id" : {
+                "author" : {
+                    "full_name" : "A. A. Milne",
+                    "age" : 100.0000000000000000,
+                    "birthCountry" : "UK"
+                }
+            },
+            "books" : [ 
+                {
+                    "title" : "Winnie the Pooh",
+                    "isbn" : 1.0000000000000000
+                }, 
+                {
+                    "title" : "Not That It Matters",
+                    "isbn" : 2.0000000000000000
+                }
+            ]
+        }
+    ],
+    "ok" : 1.0000000000000000
+}
 
 
 
