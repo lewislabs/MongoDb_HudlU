@@ -1,0 +1,3 @@
+db.books.find({releaseDate:{"$gt":new ISODate('2000-01-01')}}).explain()
+
+This query doesn't use an index, because we don't have one on "releaseDate". The explain shows a COLLSCAN was used, with totalDocsExamined=7 and nReturned=1. With more documents in the collection this could take ages. The obvious solution is to add an index on the releaseDate field.
